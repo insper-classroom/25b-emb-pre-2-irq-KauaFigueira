@@ -3,12 +3,16 @@
 #include <stdio.h>
 
 const int BTN_PIN_R = 28;
+volatile bool estado = false;
 
 void btn_callback(uint gpio, uint32_t events) {
-  if (events == 0x4) { // fall edge
-    printf("fall \n");
-  } else if (events == 0x8) { // rise edge
-    printf("rise \n");
+  if (events & GPIO_IRQ_EDGE_RISE) {
+    estado = !estado; 
+    if (estado) {
+      printf("fall\n");
+    } else {
+      printf("rise\n");
+    }
   }
 }
 
