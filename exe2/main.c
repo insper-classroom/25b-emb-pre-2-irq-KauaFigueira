@@ -6,7 +6,7 @@ const int BTN_PIN_R = 28;
 const int LED_R = 4;
 
 
-volatile int flag;
+volatile int flag = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) {    
@@ -22,7 +22,6 @@ void btn_callback(uint gpio, uint32_t events) {
 
 int main() {
   stdio_init_all();
-  flag = 0;
 
   gpio_init(BTN_PIN_R);
   gpio_set_dir(BTN_PIN_R, GPIO_IN);
