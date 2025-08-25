@@ -41,7 +41,7 @@ int main() {
 
       estado = !estado;
       gpio_put(LED_R, estado);
-      flag = 0;
+      flag = !flag;
 
     }
     
