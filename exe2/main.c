@@ -10,12 +10,8 @@ volatile int flag = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) {    
-    if (flag == 1) {
-      flag = 0;
-    }      
-    } else {
       flag = 1;
-    }
+    }     
   
   
 }
@@ -40,10 +36,9 @@ int main() {
 
       estado = !estado;
       gpio_put(LED_R, estado);
-      flag = !flag;
+      flag = 0;
 
     }
-    
 
   }
 }
